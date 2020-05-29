@@ -1,0 +1,1 @@
+thrift -r --gen html src/Index.thrift
