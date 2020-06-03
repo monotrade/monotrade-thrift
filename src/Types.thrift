@@ -7,6 +7,28 @@ namespace csharp MonoTrade.Type
 namespace py monotrade.type
 namespace cpp monotrade
 
+
+/**
+ * An Evernote Timestamp is the date and time of an event in UTC time.
+ * This is expressed as a specific number of milliseconds since the
+ * standard base "epoch" of:
+ *
+ *    January 1, 1970, 00:00:00 GMT
+ *
+ * NOTE:  the time is expressed at the resolution of milliseconds, but
+ * the value is only precise to the level of seconds.   This means that
+ * the last three (decimal) digits of the timestamp will be '000'.
+ *
+ * The Thrift IDL specification does not include a native date/time type,
+ * so this value is used instead.
+ *
+ * The service will accept timestamp values (e.g. for Note created and update
+ * times) between 1000-01-01 and 9999-12-31
+ */
+typedef i64 Timestamp
+
+
+
 // =============================== attribute defs ====================================
 /**
  * 证券代码在交易模型中是一个非常重要的标识，用于关联各类数据。
@@ -138,17 +160,23 @@ struct Exchange {
 
 
 struct Tick {
-	1: Symbol symbol,					# vnpy 
+	1: Symbol symbol,					# vnpy
+    2: Timestamp timestamp,
+    
+    5: double preClosePrice,
+    6: double price,
 
-	2: list<double> ask_prices,
-	3: list<i32> ask_volumes,  
+
+    10: double openPrice,
+    11: double highPrice,
+    12: double lowPrice,
+
+
+	21: list<double> ask_prices,
+	22: list<i32> ask_volumes,  
 	/*
 	tick包含的key值有下列值.
-    symbol              str                   标的代码
-    open                float                 开盘价
-    high                float                 最高价
-    low                 float                 最低价
-    price               float	              最新价
+    
     cum_volume          long                  成交总量/最新成交量,累计值
     cum_amount          float                 成交总金额/最新成交额,累计值
     trade_type          int                   交易类型 1: ‘双开’, 2: ‘双平’, 3: ‘多开’, 4: ‘空开’, 5: ‘空平’, 6: ‘多平’, 7: ‘多换’, 8: ‘空换’
@@ -167,7 +195,7 @@ struct Tick {
 
 struct Bar {
 	1: Symbol symbol,					# vnpy 
-
+    2: Timestamp timestamp,
 	/*
 	 bar 对象包含的key值有下列值.
     symbol         str      标的代码
@@ -201,12 +229,16 @@ struct Portfolio {
 
 
 struct Account {
-	1: string symbol,					# vnpy 
+	# 1: string symbol,					# vnpy 
 }
 
 struct Order {
 	1: string symbol,					# vnpy 
 }
 
+
+struct Transaction {
+    1: string symbol,   
+}
 
 

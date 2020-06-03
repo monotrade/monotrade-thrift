@@ -40,20 +40,14 @@ service Gateway {
 
 	/**
 	 * Send a new order. retrun orderId.
-	  sell(
-   				   4: PriceType priceType,
-				   5: TradeType tradeType)
-     throws(1: Errors.OrderException OrderException);
-
      TODO: 是否返还 OrderResult？
-
 	 */
 	string sendOrder(1: Types.Symbol symbol, 
-					  2: double price,
-					  3: i32 volume
-					  4: TradeSide side,
-					  5: Types.TradeType tradeType,
-					  6: Types.PriceType priceType
+					 2: double price,
+					 3: i32 volume,
+					 4: TradeSide side,
+					 5: Types.TradeType tradeType,
+					 6: Types.PriceType priceType
 			)
 		throws (1: Errors.OrderException orderException);
 

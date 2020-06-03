@@ -78,10 +78,8 @@ enum OrderResultType {
 struct OrderResult {
 	1: required OrderResultType resultType,
 	2: optional string orderID,		# 
-	3: optional string externalID
-	/*
-	risk_serial_no	N8	风控判断流水号		用于关联风控信息包中的风控信息条目	v	v	v
-*/
+	3: optional string externalID,
+	4: string message
 
 /*
 QuanTu
@@ -151,7 +149,11 @@ service StrategyMixin {
 	  *
 	  * @throws OrderException
 	  *   委托错误信息
-	  *   
+	  * 
+	  * @throws RiskException
+	  *   风控异常. 策略平台中的风控信息能够进行处理,可以返回异常信息.
+	  *   对于后端柜台系统的异步调用，只能在 OrderResult 中反映委托失败。
+	  *   然后再从其他途径获取失败原因。  
 	  */
 	OrderResult buy(1: Types.Symbol symbol,  
    	                2: double price,   				    
@@ -159,6 +161,7 @@ service StrategyMixin {
 				    4: Types.PriceType priceType,
 				    5: Types.TradeType tradeType)
         throws(1: Errors.OrderException OrderException);
+        throws(1: Errors.RiskException riskException);
 
 	/**
 	  * 卖出委托

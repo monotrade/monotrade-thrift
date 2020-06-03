@@ -23,7 +23,8 @@ enum OrderErrorCode {
 }
 
 /**
- *
+ * 在策略平台上拦截到的委托异常。 柜台的异步下单无法返回异常，只能先返回结果，
+ * 在通过推送或查询获取错误信息。
  */
 exception OrderException {
   1:  required  OrderErrorCode errorCode,
@@ -37,11 +38,20 @@ exception OrderException {
 
 
 
-exception SubscribeException {
-	
+enum RiskLevel {
+  NORMAL = 1,
+  WARNING = 2,
+  FORBIDDEN = 3
 }
 
 
 exception RiskException {
 	
+}
+
+
+
+
+exception SubscribeException {
+  
 }
