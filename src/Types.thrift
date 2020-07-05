@@ -3,7 +3,8 @@
  */
 
 namespace java monotrade.type
-namespace csharp MonoTrade.Type
+namespace go monotrade.type
+namespace netstd MonoTrade.Type
 namespace py monotrade.type
 namespace cpp monotrade
 

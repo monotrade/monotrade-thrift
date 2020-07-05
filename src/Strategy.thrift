@@ -24,7 +24,8 @@ include "Errors.thrift"
 include "Limits.thrift"
 
 namespace java monotrade.strategy
-namespace csharp MonoTrade.Strategy
+namespace go monotrade.strategy
+namespace netstd MonoTrade.Strategy
 namespace py monotrade.strategy
 namespace cpp monotrade
 
@@ -161,7 +162,7 @@ service StrategyMixin {
 				    4: Types.PriceType priceType,
 				    5: Types.TradeType tradeType)
         throws(1: Errors.OrderException OrderException);
-        throws(1: Errors.RiskException riskException);
+        //throws(1: Errors.RiskException riskException);
 
 	/**
 	  * 卖出委托

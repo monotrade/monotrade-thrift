@@ -5,7 +5,8 @@
 include "Types.thrift"
 
 namespace java monotrade.limits
-namespace csharp MonoTrade.Limits
+namespace go monotrade.limits
+namespace netstd MonoTrade.Limits
 namespace py monotrade.limits
 namespace cpp monotrade.limits
 
