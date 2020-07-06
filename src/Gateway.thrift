@@ -8,7 +8,7 @@ include "Limits.thrift"
 
 namespace java monotrade.gateway
 namespace go monotrade.gateway
-namespace netstd MonoTrade.Gateway
+namespace csharp MonoTrade.Gateway
 namespace py monotrader.gateway
 namespace cpp monotrade
 

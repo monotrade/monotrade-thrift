@@ -2,10 +2,10 @@
  * 本文件中定义 MonoTrade 中所有的公共类型。
  */
 
-namespace java monotrade.type
-namespace go monotrade.type
-namespace netstd MonoTrade.Type
-namespace py monotrade.type
+namespace java monotrade.types
+namespace go monotrade.types
+namespace csharp MonoTrade.Types
+namespace py monotrade.types
 namespace cpp monotrade
 
 

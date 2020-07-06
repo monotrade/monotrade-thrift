@@ -25,7 +25,7 @@ include "Limits.thrift"
 
 namespace java monotrade.strategy
 namespace go monotrade.strategy
-namespace netstd MonoTrade.Strategy
+namespace csharp MonoTrade.Strategy
 namespace py monotrade.strategy
 namespace cpp monotrade
 
