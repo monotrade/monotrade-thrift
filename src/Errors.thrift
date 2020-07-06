@@ -6,10 +6,10 @@
 include "Types.thrift"
 include "Limits.thrift"
 
-namespace java monotrade.error
-namespace go monotrade.error
-namespace csharp MonoTrade.Error
-namespace py monotrade.error
+namespace java monotrade.errors
+namespace go monotrade.errors
+namespace csharp MonoTrade.Errors
+namespace py monotrade.errors
 namespace cpp monotrade
 
 
