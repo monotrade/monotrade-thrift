@@ -1,5 +1,5 @@
 /*
- * 本文件中定义 MonoTrade 中所有的公共类型。
+ * 本文件中定义 MonoTrade 中的公共类型。
  */
 
 namespace java monotrade.types
@@ -29,8 +29,6 @@ namespace cpp monotrade
 typedef i64 Timestamp
 
 
-
-// =============================== attribute defs ====================================
 /**
  * 证券代码在交易模型中是一个非常重要的标识，用于关联各类数据。
  * 为了严格统一定义，这里定义了一个专门的类型 `Symbol`。 Symbol的格式应该为:
@@ -38,6 +36,19 @@ typedef i64 Timestamp
  * 实现的框架中应该用该约束进行检查。
  */
 typedef string Symbol
+
+
+
+/**
+ *
+ */
+struct Exchange {
+    1: string name,
+    2: string code,
+    //3: list<PriceType> supportedPriceTypes,
+}
+
+
 
 /**
  * 交易类型。 在下单时指定交易的目的。 是否支持取决于账户的权限。
@@ -150,49 +161,8 @@ struct PriceType {
 
 
 
-/**
- *
- */
-struct Exchange {
-	1: string name,
-	2: string code,
-	//3: list<PriceType> supportedPriceTypes,
-}
 
 
-struct Tick {
-	1: Symbol symbol,					# vnpy
-    2: Timestamp timestamp,
-    
-    5: double preClosePrice,
-    6: double price,
-
-
-    10: double openPrice,
-    11: double highPrice,
-    12: double lowPrice,
-
-
-	21: list<double> ask_prices,
-	22: list<i32> ask_volumes,  
-	/*
-	tick包含的key值有下列值.
-    
-    cum_volume          long                  成交总量/最新成交量,累计值
-    cum_amount          float                 成交总金额/最新成交额,累计值
-    trade_type          int                   交易类型 1: ‘双开’, 2: ‘双平’, 3: ‘多开’, 4: ‘空开’, 5: ‘空平’, 6: ‘多平’, 7: ‘多换’, 8: ‘空换’
-    last_volume         int                   瞬时成交量
-    cum_position        int                   合约持仓量(期),累计值（股票此值为0）
-    last_amount         float                 瞬时成交额
-    created_at          datetime.datetime     创建时间
-    receive_local_time  float             收到时的本地时间秒数. 3.0.113 后增加  注意: 内部使用
-    quotes              list[Dict]            股票提供买卖5档数据, list[0]~list[4]分别对应买卖一档到五档, 期货提供买卖1档数据, list[0]表示买卖一档. 目前期货的 list[1] ~ list[4] 值是没有意义的
-        quotes 里每项包含的key值有:
-          bid_p:  float   买价
-          bid_v:  int     买量
-          ask_p   float   卖价
-          ask_v   int     卖量*/  
-}
 
 struct Bar {
 	1: Symbol symbol,					# vnpy 

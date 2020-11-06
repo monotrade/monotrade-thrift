@@ -23,6 +23,8 @@ include "Types.thrift"
 include "Errors.thrift"
 include "Limits.thrift"
 
+include "Market.thrift"
+
 namespace java monotrade.strategy
 namespace go monotrade.strategy
 namespace csharp MonoTrade.Strategy
@@ -304,7 +306,7 @@ service Strategy {
 					1: string data_rule, 
 					2: string timeRule);					# join quant
 
-	void onTick(1: Types.Tick tick);	# vnpy.CTA
+	void onTick(1: Market.Tick tick);	# vnpy.CTA
 	void onBar(1: Types.Bar bar);	# vnpy.CTA
 
 	void onTrade(1: Types.Trade trade);	# vnpy.CTA
