@@ -38,6 +38,96 @@ typedef i64 Timestamp
 typedef string Symbol
 
 
+enum SecurityType {    
+    STOCK = 0;  //股票,   EQUITY(vnpy)
+    FUND = 1;   // 基金
+    INDEX = 2; // 指数
+    FUTURES = 3; // 期货
+    OPTIONS = 4; //期权
+    ETF = 5;    // ETF
+    
+    
+    
+    SPREAD = 80;  // 价差
+    
+    /* others in vnpy
+    FOREX = "外汇"
+    SPOT = "现货"
+    BOND = "债券"
+    WARRANT = "权证"
+
+    * others in joinQuant
+     lof'
+     fja'
+     fjb'
+     open_fund'
+     bond_fund'
+     stock_fund'
+     QDII_fund'
+     money_market_fund'
+     mixture_fund'。
+    */
+}
+
+
+
+enum Exchange {
+    // 以百度百科中的缩写为准
+    //proto3版本中，首成员必须为0，成员不应有相同的值
+
+    SSE = 0;   //Shanghai Stock Exchange. XSHG(joinQuant)
+    SZSE = 1;  //Shenzhen Stock Exchange. XSHE(JoinQuant)
+    CFFEX = 2; //China Financial Futures Exchange. CCFX(JoinQuant)
+    SHFE = 3;  //Shanghai Futures Exchange. XSGE(JoinQuant)
+    CZCE = 4;  //Zhengzhou Commodity Exchange.  XZCE(JoinQuant)
+    DCE = 5;   //Dalian Commodity Exchange.  XDCE(JoinQuant)
+    INE = 6;  // Shanghai International Energy Exchange.  XINE(JoinQuant)
+    
+    NEEQ = 10; //
+    
+    LOCAL = 99; // For local generated data
+
+    /* others in vnpy
+    # Chinese
+    
+    SGE = "SGE"             # Shanghai Gold Exchange
+    WXE = "WXE"             # Wuxi Steel Exchange
+    CFETS = "CFETS"         # China Foreign Exchange Trade System
+    */
+}
+
+
+//     Direction of order/trade/position.
+
+enum Direction {
+    LONG = 0;
+    SHORT = 1;
+    //     NET = "净"
+}
+
+//     Offset of order/trade.
+enum Offset {
+    OPEN = 0;           //     OPEN = "开"
+    CLOSE = 1;          //     CLOSE = "平"
+    CLOSETODAY = 2;     //     CLOSETODAY = "平今"
+    CLOSEYESTERDAY = 3; //     CLOSEYESTERDAY = "平昨"
+}
+
+
+enum OrderType {
+    LIMIT = 0;  //"限价"
+    MARKET = 1;  //"市价"
+    STOP = 2;  //"STOP"
+    FAK = 3;  //"FAK"
+    FOK = 4;  //"FOK"
+    //RFQ = 0;  //"询价"
+}
+    
+    
+
+/******************************/
+
+
 
 /**
  *
