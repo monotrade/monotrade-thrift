@@ -29,6 +29,12 @@ namespace cpp monotrade
 typedef i64 Timestamp
 
 
+
+/**
+ *  duration of milliseconds
+ */
+typedef i64 Duration 
+
 /**
  * 证券代码在交易模型中是一个非常重要的标识，用于关联各类数据。
  * 为了严格统一定义，这里定义了一个专门的类型 `Symbol`。 Symbol的格式应该为:
@@ -36,6 +42,7 @@ typedef i64 Timestamp
  * 实现的框架中应该用该约束进行检查。
  */
 typedef string Symbol
+
 
 
 enum SecurityType {    
@@ -68,6 +75,15 @@ enum SecurityType {
      mixture_fund'。
     */
 }
+
+/**
+ *
+ */
+#struct Exchange {
+#    1: string name,
+#    2: string code,
+#    //3: list<PriceType> supportedPriceTypes,
+#}
 
 
 
@@ -128,15 +144,6 @@ enum OrderType {
 /******************************/
 
 
-
-/**
- *
- */
-struct Exchange {
-    1: string name,
-    2: string code,
-    //3: list<PriceType> supportedPriceTypes,
-}
 
 
 
@@ -249,57 +256,5 @@ struct PriceType {
 }
 
 
-
-
-
-
-
-struct Bar {
-	1: Symbol symbol,					# vnpy 
-    2: Timestamp timestamp,
-	/*
-	 bar 对象包含的key值有下列值.
-    symbol         str      标的代码
-    frequency      str      频率, 支持多种频率. 要把时间转换为相应的秒数. 如 30s, 60s, 300s, 900s
-    open           float    开盘价
-    close          float    收盘价
-    high           float    最高价
-    low            float    最低价
-    amount         float    成交额
-    volume         long     成交量
-    position       long     持仓量（仅期货）
-    bob            datetime.datetime    bar开始时间
-    eob            datetime.datetime    bar结束时间
-    receive_local_time  float       收到时的本地时间秒数. 3.0.113 后增加  注意: 内部使用
-	*/
-}
-
-
-struct Trade {
-	1: string symbol,					# vnpy 
-}
-
-struct Position {
-	1: string symbol,					# vnpy 
-}
-
-
-struct Portfolio {
-
-}
-
-
-struct Account {
-	# 1: string symbol,					# vnpy 
-}
-
-struct Order {
-	1: string symbol,					# vnpy 
-}
-
-
-struct Transaction {
-    1: string symbol,   
-}
 
 

@@ -1,44 +1,51 @@
-syntax = "proto3";
+include "Types.thrift"
 
-package monotrade.message;
-option go_package = ".;monotrade";
+/*
+ * 本文件中定义交易相关的类型。
+ */
 
-//import "google/protobuf/duration.proto";
-import public "google/protobuf/timestamp.proto";
-import "enums.proto";
+namespace java monotrade.trade
+namespace go monotrade.trade
+namespace csharp MonoTrade.Trade
+namespace py monotrade.trade
+namespace cpp monotrade
 
-message OrderRequest {
-  string symbol = 1;
-  monotrade.message.Direction direction = 2;
-  monotrade.message.Offset offset = 3;
-  monotrade.message.OrderType type = 4;
-  float price = 5;
-  float volume = 6; 
+
+
+
+
+
+
+struct Portfolio {
+
+}
+
+
+
+
+
+
+struct Transaction {
+    1: string symbol,   
+}
+
+
+ 
+
+struct OrderRequest {
+  	 1: Types.Symbol symbol, // full symbol with code and exchange
+  	 2: Types.Direction direction,
+  	 3: Types.Offset offset,
+  	 4: Types.OrderType type,
+  	 5: double price,
+  	 6: double volume,
 
 
 //     reference: str = ""
 
 }
 
-
-
-message Order {
-	string gatewayName = 99;
-
-	string symbol = 1;
-  	monotrade.message.Direction direction = 2;
-  	monotrade.message.Offset offset = 3;
-	monotrade.message.OrderType type = 4;
-	float price = 5;
-	float volume = 6; 
-
-	string orderID = 50;
-	google.protobuf.Timestamp time = 51;
-	float tradedVolume = 52;
-	float leftVolume = 53;
-	
-
-	enum Status {
+enum OrderStatus {
 		SUBMITTING = 0;	//"提交中"
 	    NOTTRADED = 1;	//"未成交"
 	    PARTTRADED = 2;	//"部分成交"
@@ -47,11 +54,29 @@ message Order {
 	    REJECTED = 5;	//"拒单"
 	}
 
+struct Order {
+	99: string gatewayName,
+
+	1: Types.Symbol symbol, // full symbol with code and exchange
+  	2: Types.Direction direction,
+  	3: Types.Offset offset,
+	4: Types.OrderType type,
+	5: double price,
+	6: double volume,
+
+	50: string orderID,
+	51: Types.Timestamp time,
+	52: double tradedVolume,
+	53: double leftVolume,
+	
+
+	
+
 	// enum ActiveStatus {
 	// 	//     def is_active(self) -> bool:		
 	// }
 	
-    Status status = 59;
+    59: OrderStatus status,
 
 }
 
@@ -60,39 +85,36 @@ message Order {
 //Trade data contains information of a fill of an order. One order
 //can have several trade fills.
     
-message Trade {
-	string symbol = 1;
-  	string orderID = 2;
-  	string tradeID = 3;
-
-  	monotrade.message.Direction direction = 4;
-  	monotrade.message.Offset offset = 5;
-	monotrade.message.OrderType type = 6;
-
-	google.protobuf.Timestamp time = 11;
-	float price = 12;
-	float volume = 13;
-    
-    string gatewayName = 99;
+struct Trade {
+	1: Types.Symbol symbol, // full symbol with code and exchange
+  	2: string orderID,
+  	3: string tradeID,
+  	4: Types.Direction direction,
+  	5: Types.Offset offset,
+	6: Types.OrderType type,
+	11: Types.Timestamp time,
+	12: double price,
+	13: double volume,
+    99: string gatewayName,
 }
 
 
 //Positon data is used for tracking each individual position holding.
-message Position {
-	string symbol = 1;
-	monotrade.message.Direction direction = 2;
-	float volume = 3;
-	float price = 4;			//均价
-	float frozenVolume = 5;
-	float profitAndLoss = 6;	//盈亏
-	float yesterdayVolume = 7;	// 昨仓
-	string gatewayName = 99;
+struct Position {
+	1: Types.Symbol symbol, // full symbol with code and exchange
+	2: Types.Direction direction,
+	3: double volume,
+	4: double price,			//均价
+	5: double frozenVolume,
+	6: double profitAndLoss,	//盈亏
+	7: double yesterdayVolume,	// 昨仓
+	99: string gatewayName,
 }
 
 //Account data contains information about balance, frozen and available.
-message Account {
-	string accountID = 1;
-	float balance = 2;		// 余额
-	float frozen =3;		// 冻结
+struct Account {
+	1: string accountID,
+	2: double balance,		// 余额
+	3: double frozen,		// 冻结
 }
 

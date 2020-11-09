@@ -24,6 +24,7 @@ include "Errors.thrift"
 include "Limits.thrift"
 
 include "Market.thrift"
+include "Trade.thrift"
 
 namespace java monotrade.strategy
 namespace go monotrade.strategy
@@ -307,12 +308,12 @@ service Strategy {
 					2: string timeRule);					# join quant
 
 	void onTick(1: Market.Tick tick);	# vnpy.CTA
-	void onBar(1: Types.Bar bar);	# vnpy.CTA
+	void onBar(1: Market.Bar bar);	# vnpy.CTA
 
-	void onTrade(1: Types.Trade trade);	# vnpy.CTA
-	void onPosition(1: Types.Position position);	# vnpy.CTA
-	void onAccount(1: Types.Account accountStatus);	# vnpy.CTA
-	void onOrder(1: Types.Order orderStatus);	# vnpy.CTA
+	void onTrade(1: Trade.Trade trade);	# vnpy.CTA
+	void onPosition(1: Trade.Position position);	# vnpy.CTA
+	void onAccount(1: Trade.Account accountStatus);	# vnpy.CTA
+	void onOrder(1: Trade.Order orderStatus);	# vnpy.CTA
 
 /*
     # type: (Context, int, Text) -> NoReturn

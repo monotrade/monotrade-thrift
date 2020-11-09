@@ -1,0 +1,1 @@
+thrift -r --gen csharp -out ../../MMDashboard/src/Monotrade.API/ src/Index.thrift
