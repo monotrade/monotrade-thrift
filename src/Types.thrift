@@ -121,13 +121,7 @@ enum Direction {
     //     NET = "净"
 }
 
-//     Offset of order/trade.
-enum Offset {
-    OPEN = 0;           //     OPEN = "开"
-    CLOSE = 1;          //     CLOSE = "平"
-    CLOSETODAY = 2;     //     CLOSETODAY = "平今"
-    CLOSEYESTERDAY = 3; //     CLOSEYESTERDAY = "平昨"
-}
+
 
 
 enum OrderType {
@@ -147,28 +141,6 @@ enum OrderType {
 
 
 
-/**
- * 交易类型。 在下单时指定交易的目的。 是否支持取决于账户的权限。
- *
- * NORMAL: 现货普通交易，期货和期权的投机交易。
- *
- * HEDGING: 保值(套保)，适用于期货。期货帐号要开通相应的权限。
- *
- * ARBITRAGE: 套利，适用于期货。期货帐号要开通相应的权限。
- *
- * COVERED: 备兑交易，适用于期权。期权帐号要开通相应的权限。
- *          备兑开仓是指投资者在拥有标的证券（含当日买入）的基础上，
- *          卖出相应的认购期权（百分之百现券担保，不需现金保证金），
- *          即通过备兑开仓增加备兑持仓头寸。 
- *          此时该投资者为期权的卖方，可以获得相应的权利金。 
- */
-
-enum TradeType {
-    NORMAL = 1,      # 0x000001
-    HEDGING = 4,     # 0x000100
-    ARBITRAGE = 8,   # 0x001000 
-    COVERED = 16,    # 0x010000
-}
 
 
 /**

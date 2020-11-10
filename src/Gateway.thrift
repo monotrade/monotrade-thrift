@@ -34,24 +34,43 @@ enum TradeSide {
 	COVER_TODAY,
 }
 
-service Gateway {
-	void initialize();
-	void connect();
-	void close();
+
+service Gateway {	
+	void connect(1: map<string,string> setting)
+	void close()
 
 	/**
 	 * Send a new order. retrun orderId.
      TODO: 是否返还 OrderResult？
 	 */
-	string sendOrder(1: Types.Symbol symbol, 
+	string sendOrder(1: Types.Symbol symbol, // full symbol with code and exchange
 					 2: double price,
 					 3: i32 volume,
-					 4: TradeSide side,
-					 5: Types.TradeType tradeType,
-					 6: Types.PriceType priceType
+					 4: Trade side,
+					 # 4: Trade.Offset offset,
+  	 				 # 5: Trade.OrderType type,
+
+  	 				 6: Trade.PriceType priceType  //  默认：限价
+					 7: Trade.TradeType tradeType,  // 普通，套保，套利，备兑
+					 8: double price,
+  	 				 9: double volume,
+
+
+					 10: string reference = "", // 备注
+
 			)
 		throws (1: Errors.OrderException orderException);
 
     void cancelOrder(1: string orderID)
     	throws (1: Errors.OrderException orderException);
+
+
+        #    void Subscribe(string symbol);
+        #void SendOrder(OrderRequest request);
+        #void cancelOrder(string orderID);
+
+        #// asynchronised query
+        #void queryAccount();
+        #void queryPosition();
+
 }
