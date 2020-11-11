@@ -66,8 +66,8 @@ enum TradeType {
 港股支持方式为LMT,ALO,ACO,ELO,SLO
 期货支持方式为LMT
 #目前，深圳支持的方式为0－5，上海只支持0，4、6三种
-
  */
+
 enum PriceType {
     LMT = 0,     #限价委托
     BOC  =  1  ,   #对方最优价格委托
@@ -76,13 +76,38 @@ enum PriceType {
     B5TC =   4 ,   #最优五档剩余撤销
     FOK  =   5 ,   #全额成交或撤销委托(市价FOK)
     B5TL =   6 ,   #最优五档剩余转限价
-    ALO  =   7 ,  #竞价限价盘
-    ACO  =   8 ,  #竞价盘
-    ELO  =   9 ,  #增强限价盘
-    SLO  =   10  ,  #特别限价盘
+//    ALO  =   7 ,  #竞价限价盘
+//    ACO  =   8 ,  #竞价盘
+//    ELO  =   9 ,  #增强限价盘
+//    SLO  =   10  ,  #特别限价盘
     FOK_LMT = 11 ,  #全额成交或撤销委托(限价FOK)
     EXE  =    12 ,  #期权行权
     MTL  =    13  #市价剩余转限价
+
+    //？？？ STOP = 2;  //"STOP"
+    //？？？ FAK = 3;  //"FAK"
+
+    /*struct PriceType {
+
+    QuanTu
+
+
+    2   10002   价格类型
+    上交所价格类型 
+    0   限价
+    A   五档即成剩撤
+    b   五档即成剩转
+    深交所价格类型 
+    0   限价
+    A   五档即成剩撤
+    C   即成剩撤
+    D   对手方最优
+    E   本方最优
+    F   全额成或撤
+    期货价格类型  
+    0   限价
+    
+}
 
 /* O32
     price_type  UFX价格类型
@@ -116,27 +141,7 @@ enum PriceType {
 
 
 
-struct PriceType {
-    /*
-    QuanTu
 
-
-    2   10002   价格类型
-    上交所价格类型 
-    0   限价
-    A   五档即成剩撤
-    b   五档即成剩转
-    深交所价格类型 
-    0   限价
-    A   五档即成剩撤
-    C   即成剩撤
-    D   对手方最优
-    E   本方最优
-    F   全额成或撤
-    期货价格类型  
-    0   限价
-    
-}
 
 */
 }
@@ -160,14 +165,7 @@ struct Transaction {
 
 
  
-enum OrderType {
-    LIMIT = 0;  //"限价"
-    MARKET = 1;  //"市价"
-    STOP = 2;  //"STOP"
-    FAK = 3;  //"FAK"
-    FOK = 4;  //"FOK"
-    //RFQ = 0;  //"询价"
-}
+
 
 enum OrderStatus {
 		SUBMITTING = 0;	//"提交中"
