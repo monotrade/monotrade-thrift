@@ -13,6 +13,16 @@ namespace cpp monotrade
 
 
 
+//     Direction of order/trade/position.
+
+enum Direction {
+    LONG = 0;
+    SHORT = 1;
+    //     NET = "净"
+}
+
+
+
 //     Offset of order/trade.
 enum Offset {
     OPEN = 0;           //     OPEN = "开"
@@ -172,7 +182,7 @@ struct Order {
 	99: string gatewayName,
 
 	1: Types.Symbol symbol, // full symbol with code and exchange
-  	2: Types.Direction direction,
+  	2: Direction direction,
   	3: Offset offset,
 	4: OrderType type,
 	5: double price,
@@ -203,7 +213,7 @@ struct Trade {
 	1: Types.Symbol symbol, // full symbol with code and exchange
   	2: string orderID,
   	3: string tradeID,
-  	4: Types.Direction direction,
+  	4: Direction direction,
   	5: Offset offset,
 	//6: OrderType type,
 	11: Types.Timestamp time,
@@ -216,7 +226,7 @@ struct Trade {
 //Positon data is used for tracking each individual position holding.
 struct Position {
 	1: Types.Symbol symbol, // full symbol with code and exchange
-	2: Types.Direction direction,
+	2: Direction direction,
 	3: double volume,
 	4: double price,			//均价
 	5: double frozenVolume,

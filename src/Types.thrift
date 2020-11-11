@@ -50,28 +50,3 @@ typedef string Symbol
 
 
 
-
-
-//     Direction of order/trade/position.
-
-enum Direction {
-    LONG = 0;
-    SHORT = 1;
-    //     NET = "净"
-}
-
-
-
-
-
-    
-    
-
-/******************************/
-
-
-
-
-
-
-
