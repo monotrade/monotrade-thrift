@@ -5,18 +5,76 @@ include "Types.thrift"
  * 本文件中定义 MonoTrade 中市场相关的公共类型。
  */
 
-namespace java monotrade.types
-namespace go monotrade.types
-namespace csharp MonoTrade.Types
-namespace py monotrade.types
+namespace java monotrade.market
+namespace go monotrade.market
+namespace csharp MonoTrade.market
+namespace py monotrade.market
 namespace cpp monotrade
 
 /*************************************/
 
+enum Exchange {
+    // 以百度百科中的缩写为准
+    //proto3版本中，首成员必须为0，成员不应有相同的值
+
+    SSE = 0;   //Shanghai Stock Exchange. XSHG(joinQuant)
+    SZSE = 1;  //Shenzhen Stock Exchange. XSHE(JoinQuant)
+    CFFEX = 2; //China Financial Futures Exchange. CCFX(JoinQuant)
+    SHFE = 3;  //Shanghai Futures Exchange. XSGE(JoinQuant)
+    CZCE = 4;  //Zhengzhou Commodity Exchange.  XZCE(JoinQuant)
+    DCE = 5;   //Dalian Commodity Exchange.  XDCE(JoinQuant)
+    INE = 6;  // Shanghai International Energy Exchange.  XINE(JoinQuant)
+    
+    NEEQ = 10; //
+    
+    LOCAL = 99; // For local generated data
+
+    /* others in vnpy
+    # Chinese
+    
+    SGE = "SGE"             # Shanghai Gold Exchange
+    WXE = "WXE"             # Wuxi Steel Exchange
+    CFETS = "CFETS"         # China Foreign Exchange Trade System
+    */
+}
+
+
+
+enum SecurityType {    
+    STOCK = 0;  //股票,   EQUITY(vnpy)
+    FUND = 1;   // 基金
+    INDEX = 2; // 指数
+    FUTURES = 3; // 期货
+    OPTIONS = 4; //期权
+    ETF = 5;    // ETF
+    
+    
+    
+    SPREAD = 80;  // 价差
+    
+    /* others in vnpy
+    FOREX = "外汇"
+    SPOT = "现货"
+    BOND = "债券"
+    WARRANT = "权证"
+
+    * others in joinQuant
+     lof'
+     fja'
+     fjb'
+     open_fund'
+     bond_fund'
+     stock_fund'
+     QDII_fund'
+     money_market_fund'
+     mixture_fund'。
+    */
+}
+
 
 struct Security {
     1: Types.Symbol symbol, // full symbol with code and exchange
-    2: Types.SecurityType type,
+    2: SecurityType type,
     3: string display_name,    // 中文名称
     4: string name,    // 代号
     5: Types.Timestamp start_date = 5;  // yyyy-mm-dd

@@ -5,6 +5,7 @@
 include "Types.thrift"
 include "Errors.thrift"
 include "Limits.thrift"
+include "Trade.thrift"
 
 namespace java monotrade.gateway
 namespace go monotrade.gateway
@@ -45,16 +46,14 @@ service Gateway {
 	 */
 	string sendOrder(1: Types.Symbol symbol, // full symbol with code and exchange
 					 2: double price,
-					 3: i32 volume,
-					 4: Trade side,
+					 3: double volume,
+					 4: Trade.Trade side,
 					 # 4: Trade.Offset offset,
   	 				 # 5: Trade.OrderType type,
 
   	 				 6: Trade.PriceType priceType  //  默认：限价
 					 7: Trade.TradeType tradeType,  // 普通，套保，套利，备兑
-					 8: double price,
-  	 				 9: double volume,
-
+					 
 
 					 10: string reference = "", // 备注
 

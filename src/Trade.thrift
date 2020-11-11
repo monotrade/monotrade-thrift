@@ -150,7 +150,14 @@ struct Transaction {
 
 
  
-
+enum OrderType {
+    LIMIT = 0;  //"限价"
+    MARKET = 1;  //"市价"
+    STOP = 2;  //"STOP"
+    FAK = 3;  //"FAK"
+    FOK = 4;  //"FOK"
+    //RFQ = 0;  //"询价"
+}
 
 enum OrderStatus {
 		SUBMITTING = 0;	//"提交中"
@@ -197,8 +204,8 @@ struct Trade {
   	2: string orderID,
   	3: string tradeID,
   	4: Types.Direction direction,
-  	5: Types.Offset offset,
-	6: Types.OrderType type,
+  	5: Offset offset,
+	//6: OrderType type,
 	11: Types.Timestamp time,
 	12: double price,
 	13: double volume,

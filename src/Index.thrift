@@ -12,4 +12,6 @@ include "Errors.thrift"
 //专用模块
 include "Strategy.thrift"
 include "Gateway.thrift"
-include "Framework.thrift"
+include "Market.thrift"
+include "Trade.thrift"
+include "NeeqMarket.thrift"

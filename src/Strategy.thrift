@@ -162,8 +162,8 @@ service StrategyMixin {
 	OrderResult buy(1: Types.Symbol symbol,  
    	                2: double price,   				    
 				    3: i32 volume,				   
-				    4: Types.PriceType priceType,
-				    5: Types.TradeType tradeType)
+				    4: Trade.PriceType priceType,
+				    5: Trade.TradeType tradeType)
         throws(1: Errors.OrderException OrderException);
         //throws(1: Errors.RiskException riskException);
 
@@ -197,8 +197,8 @@ service StrategyMixin {
    	OrderResult sell(1: Types.Symbol symbol,  
    				   2: double price,   				    
 				   3: i32 volume,				   
-				   4: Types.PriceType priceType,
-				   5: Types.TradeType tradeType)
+				   4: Trade.PriceType priceType,
+				   5: Trade.TradeType tradeType)
      throws(1: Errors.OrderException OrderException);
 
 
@@ -212,8 +212,8 @@ service StrategyMixin {
     OrderResult sellToday(1: Types.Symbol symbol,  
    				   2: double price,   				    
 				   3: i32 volume,				   
-				   4: Types.PriceType priceType,
-				   5: Types.TradeType tradeType)
+				   4: Trade.PriceType priceType,
+				   5: Trade.TradeType tradeType)
      throws(1: Errors.OrderException OrderException);
 
 
@@ -232,8 +232,8 @@ service StrategyMixin {
      OrderResult short(1: Types.Symbol symbol,  
    				   2: double price,   				    
 				   3: i32 volume,				   
-				   4: Types.PriceType priceType,
-				   5: Types.TradeType tradeType)
+				   4: Trade.PriceType priceType,
+				   5: Trade.TradeType tradeType)
      throws(1: Errors.OrderException OrderException);
 
     
@@ -252,8 +252,8 @@ service StrategyMixin {
     OrderResult cover(1: Types.Symbol symbol,  
    				   2: double price,   				    
 				   3: i32 volume,				   
-				   4: Types.PriceType priceType,
-				   5: Types.TradeType tradeType)
+				   4: Trade.PriceType priceType,
+				   5: Trade.TradeType tradeType)
      throws(1: Errors.OrderException OrderException);
 
 	/**
@@ -266,8 +266,8 @@ service StrategyMixin {
       OrderResult coverToday(1: Types.Symbol symbol,  
    				   2: double price,   				    
 				   3: i32 volume,				   
-				   4: Types.PriceType priceType,
-				   5: Types.TradeType tradeType)
+				   4: Trade.PriceType priceType,
+				   5: Trade.TradeType tradeType)
      throws(1: Errors.OrderException OrderException);
      
 
