@@ -1,0 +1,13 @@
+package monotrade
+
+service EventEngine {
+	
+}
+
+service Gateway {
+	
+}
+
+service Strategy {
+	
+}
