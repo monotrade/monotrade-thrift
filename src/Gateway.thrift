@@ -23,17 +23,7 @@ service GatewayMixin {
 }
 
 
-/*
- * 这个 TradeSide 是为了实现 Gateway 的方便
- */
-enum TradeSide {
-	BUY,
-	SELL,
-	SHORT,
-	COVER,
-	SELL_TODAY,
-	COVER_TODAY,
-}
+
 
 
 service Gateway {	

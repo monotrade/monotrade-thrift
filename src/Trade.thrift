@@ -21,15 +21,31 @@ enum Direction {
     //     NET = "净"
 }
 
+/*
+ * TradeSide = Direction + Offset
+ * 
+ * 这个 TradeSide 是为了实现 Gateway 的方便
+ * 在期货交易中，“平今”就是平掉今天仓位，“平仓”就是平掉历史仓位。
+ * 有些交易所没有“平今”，
+ * 有些交易所虽然默认平老仓，但如果今天有新开仓，则按平今收取手续费，如中金所 
+ */
+enum TradeSide {
+    BUY,
+    SELL,
+    SHORT,
+    COVER,
+    SELL_TODAY, 
+    COVER_TODAY,
+}
 
 
 //     Offset of order/trade.
-enum Offset {
-    OPEN = 0;           //     OPEN = "开"
-    CLOSE = 1;          //     CLOSE = "平"
-    CLOSETODAY = 2;     //     CLOSETODAY = "平今"
-    CLOSEYESTERDAY = 3; //     CLOSEYESTERDAY = "平昨"
-}
+#enum Offset {
+#    OPEN = 0;           //     OPEN = "开"
+#    CLOSE = 1;          //     CLOSE = "平"
+#    CLOSETODAY = 2;     //     CLOSETODAY = "平今"
+#    CLOSEYESTERDAY = 3; //     CLOSEYESTERDAY = "平昨"
+#}
 
 /**
  * 交易类型。 在下单时指定交易的目的。 是否支持取决于账户的权限。
