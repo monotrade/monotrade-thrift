@@ -196,9 +196,8 @@ struct Order {
 	99: string gatewayName,
 
 	1: Types.Symbol symbol, // full symbol with code and exchange
-  	2: Direction direction,
-  	3: Offset offset,
-	4: OrderType type,
+  	2: TradeSide side,  	
+	4: TradeType orderType,
 	5: double price,
 	6: double volume,
 
@@ -227,8 +226,8 @@ struct Trade {
 	1: Types.Symbol symbol, // full symbol with code and exchange
   	2: string orderID,
   	3: string tradeID,
-  	4: Direction direction,
-  	5: Offset offset,
+  	4: TradeSide side,  	
+	5: TradeType orderType,
 	//6: OrderType type,
 	11: Types.Timestamp time,
 	12: double price,

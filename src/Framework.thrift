@@ -5,6 +5,7 @@ include "Types.thrift"
 include "Errors.thrift"
 include "Limits.thrift"
 include "Trade.thrift"
+include "Market.thrift"
 
 namespace java monotrade
 namespace go monotrade
@@ -17,14 +18,13 @@ namespace cpp monotrade
 
     It also generates timer event by every interval seconds, which can be used for timing purpose.
 */
-service MessageEngine {
-	void put(1: any message)
-}
+// service MessageEngine {
+// 	void put(1: any message)
+// }
 
 
 /*
  * 实现回调等不宜用 thrift 定义的特性。
- * Minxin 会注入到实际的 Gateway 中
  *
  * 包括 Gateway需要使用到的方法的定义，以及 Gateway的上下文数据
  * 使用基类， mixin, 还是 引用 context ?????
