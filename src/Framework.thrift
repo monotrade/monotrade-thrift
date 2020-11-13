@@ -1,29 +1,45 @@
 /*
- * This file contains the MonoTrade gateway interface.
+ * 本文件中平台接口。
  */
-
 include "Types.thrift"
 include "Errors.thrift"
 include "Limits.thrift"
 include "Trade.thrift"
 
-namespace java monotrade.gateway
-namespace go monotrade.gateway
-namespace csharp MonoTrade.Gateway
-namespace py monotrader.gateway
+namespace java monotrade
+namespace go monotrade
+namespace csharp MonoTrade
+namespace py monotrade
 namespace cpp monotrade
+
+/**
+    Event engine distributes event object based on its type to those handlers registered.
+
+    It also generates timer event by every interval seconds, which can be used for timing purpose.
+*/
+service MessageEngine {
+	void put(1: any message)
+}
 
 
 /*
  * 实现回调等不宜用 thrift 定义的特性。
  * Minxin 会注入到实际的 Gateway 中
+ *
+ * 包括 Gateway需要使用到的方法的定义，以及 Gateway的上下文数据
+ * 使用基类， mixin, 还是 引用 context ?????
  */
-service GatewayMixin {
-	
+service GatewayContext {
+    // Gateway 可以调用的方法(通过 GatewayContext, 或 Mixin 实现？)
+    void onTick(1: Market.Tick tick);
+    void onOrder(1: Trade.Order order);
+    void onTrade(1: Trade.Trade trade);
+    void onPosition(1: Trade.Position position);
+    void onAccount(1: Trade.Account account);
+    void onLog(1: string message);
+    void onHint(1: string hintMessage);
+    void onVoice(1: string voiceMessage);
 }
-
-
-
 
 
 service Gateway {	
@@ -62,4 +78,11 @@ service Gateway {
         #void queryAccount();
         #void queryPosition();
 
+    
+
+
+}
+
+service Strategy {
+	
 }
